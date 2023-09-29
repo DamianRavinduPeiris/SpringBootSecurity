@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JWTService {
-    public static String extractUsername(String jwtToken) {
+    public  String extractUsername(String jwtToken) {
+        return null;
     }
 }
