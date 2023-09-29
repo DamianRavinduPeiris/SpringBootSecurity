@@ -1,6 +1,5 @@
 package com.damian.security.config;
 
-import com.damian.security.util.JWTUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +17,7 @@ import java.io.IOException;
 public class JWTAuthFilter extends OncePerRequestFilter {
     @Autowired
     private JWTService JWTService;
+
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader("Authorization");//Extracting the header.
