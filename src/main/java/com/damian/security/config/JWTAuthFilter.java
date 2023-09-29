@@ -16,6 +16,9 @@ import java.io.IOException;
 public class JWTAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(@NonNull  HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
+        String authHeader= request.getHeader("Authorization");//Extracting the header.
+        String jwtToken  = null;
+
 
     }
 }
