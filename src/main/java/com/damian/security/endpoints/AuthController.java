@@ -1,12 +1,12 @@
 package com.damian.security.endpoints;
 
+import com.damian.security.model.AuthRequest;
+import com.damian.security.model.UserDetails;
 import com.damian.security.response.Response;
+import com.damian.security.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/auth")
@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     @Autowired
     private Response response;
+    @Autowired
+    private AuthService authService;
     @PostMapping(path = "/register",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Response register(){
+    public Response register(@RequestBody UserDetails userDetails){
+        authService.register(userDetails);
         return response;
     }
-    @PostMapping(path = "/authenticate",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Response authenticate(){
-        return response;
-    }
+
 
 }

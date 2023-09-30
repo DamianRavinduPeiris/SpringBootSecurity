@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Data
 public class Response {
     private int statusCode;
