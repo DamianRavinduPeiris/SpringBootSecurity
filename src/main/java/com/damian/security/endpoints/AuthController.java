@@ -1,6 +1,5 @@
 package com.damian.security.endpoints;
 
-import com.damian.security.model.AuthRequest;
 import com.damian.security.model.UserDetails;
 import com.damian.security.response.Response;
 import com.damian.security.service.AuthService;

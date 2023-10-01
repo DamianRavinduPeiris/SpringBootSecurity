@@ -29,7 +29,7 @@ public class AuthService {
         userRepo.save(userDetails);
         response.setStatusCode(HttpStatus.OK.value());
         response.setMessage("User successfully registered and JWT Successfully generated!");
-        response.setData(jwtService.generateToken(userDetails));
+        response.setData("JWT : "+jwtService.generateToken(userDetails));
         return response;
     }
 

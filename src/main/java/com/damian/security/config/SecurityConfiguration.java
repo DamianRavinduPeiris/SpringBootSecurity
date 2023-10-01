@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 
 @Configuration
 @EnableWebSecurity
@@ -18,13 +19,14 @@ public class SecurityConfiguration {
     @Autowired
     private JWTAuthFilter jwtAuthFilter;
     @Autowired
-    private AuthenticationProvider authnticationProvider;
+    private AuthenticationProvider authenticationProvider;
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
             http
                     .csrf()
-                    .disable().authorizeHttpRequests()
+                    .disable().authorizeRequests()
                     .requestMatchers("api/v1/auth/**")
                     .permitAll()
                     .anyRequest()
@@ -33,7 +35,7 @@ public class SecurityConfiguration {
                     .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
-                    .authenticationProvider(authnticationProvider)
+                    .authenticationProvider(authenticationProvider)
                     .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
 
