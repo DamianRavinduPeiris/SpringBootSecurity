@@ -15,6 +15,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+
 public class SecurityConfiguration {
     @Autowired
     private JWTAuthFilter jwtAuthFilter;
@@ -27,7 +28,7 @@ public class SecurityConfiguration {
             http
                     .csrf()
                     .disable().authorizeRequests()
-                    .requestMatchers("api/v1/auth/**")
+                    .requestMatchers("api/v1/auth/register")
                     .permitAll()
                     .anyRequest()
                     .authenticated()
